@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Exercicio 1</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            //exe 1
+            $("#botao1").click(function () {
+                $("div").load("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/categorias.php");
+
+            });
+            //exe2
+            $("#botao2").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php", function (dados) {
+                    $("#div1").html(dados);
+                });
+                //exe 3
+            });
+            $("#botao3").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/produtos.php",
+                    {
+                        categoria: $("input").val()
+
+                    },
+                    function (dados) {
+                        $("#div1").html(dados);
+
+                    });
+            });
+
+            $("#botao4").click(function () {
+                $.get("http://hawkman.fabricadesoftware.ifc.edu.br/~rafael/lojinha/ajax/dados_json.php", function (dados) {
+                    $("div").append(dados["endereco"]+"<br>");
+                    $("div").append(dados["campus"]+"<br>");
+                    $("div").append(dados["municipio"]+"<br>");
+                    $("div").append(dados["uf"]+"<br>");
+                    $("div").append(dados["ies"]+"<br>");
+                    $("div").append(dados["cursos"]+"<br>");
+
+                });
+
+
+
+            });
+        });
+
+
+
+    </script>
+</head>
+<body>
+<button id="botao1">Primeiro Botão</button>
+<button id="botao2">Segundo Botão</button>
+<div id="div1">leaninha</div>
+<input type="number" name="">
+<button id="botao3">Terceiro Botão</button>
+<button id="botao4">Quarto Botão</button>
+</body>
+</html>
+
+
